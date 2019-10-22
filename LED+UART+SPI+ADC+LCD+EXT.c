@@ -205,7 +205,7 @@ void extint_to_lcd()
 //*********************************************************************************************//
 int main()
 {
-	VPBDIV=0x02;											//div Plck by two i.e., 60Mhz/2=30MHz=Pclk
+	VPBDIV=0x01;				//div Plck by two i.e., 60Mhz
 	IO0DIR|=(1<<31);
 	IO0SET|=(1<<31);
 	adc_init();
