@@ -1,4 +1,6 @@
 /****** SET LCD header VPBDIV=0x02 , dont use lcd timer*******/
+/****** OR vpbdiv=0x01 uart dll=0x6E dlm=0x01 ********/
+
 #include <LPC214x.h>
 #include <string.h>
 #include <stdlib.h>
@@ -17,7 +19,8 @@ void uart_init()
 {
 	PINSEL0|=(1<<16)|(1<<18);						//enable the txd and rxd
 	U1LCR=0x83;													//8bit, no parity, 1 stop bit, dlab=1
-	U1DLL=0xB7;													//Baud Rate  9600
+	U1DLL=0x6E;
+	U1DLM=0x01;		//Baud Rate  9600
 	U1FDR=0xF1;													//MULVAL =15 DIVADDVAL=1
 	U1LCR=0x03;													//8bit, no parity, 1 stop bit, dlab=0
 }
